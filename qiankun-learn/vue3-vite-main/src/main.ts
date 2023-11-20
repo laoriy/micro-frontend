@@ -10,8 +10,8 @@ registerMicroApps([
   {
     name: 'vue-vite3-sub',
     entry: 'http://localhost:5174',
-    container: '#VueVite3Sub',
-    activeRule: '/vuevite3sub'
+    container: '#vue3ViteSub',
+    activeRule: '/vue3ViteSub'
   }
 ])
 start({ prefetch: true, sandbox: true })

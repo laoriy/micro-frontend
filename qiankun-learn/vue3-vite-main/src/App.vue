@@ -1,88 +1,87 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+<script lang="ts" setup>
+import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue'
+const { push, go } = useRouter()
+const handleOpen = (key: string, keyPath: string[]) => {
+  console.log(key, keyPath)
+}
+const menus = [
+  { path: '/', title: 'Index', key: '1' },
+  { path: '/about', title: 'About', key: '2' },
+  { path: '/vue3ViteSub', title: 'Vue3ViteSub Home', key: '3' },
+  { path: '/vue3ViteSub/about', title: 'Vue3ViteSub About', key: '4' }
+]
+const pageTitle = ref('Index')
+
+const handleSelect = (index: string) => {
+  const { path, title } = menus.find((m) => m.key === index)!
+  pageTitle.value = title
+  push(path)
+}
+
+const goBack = () => {
+  go(-1)
+}
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/vuevite3sub">to vuevite3sub Home</RouterLink>
-        <RouterLink to="/vuevite3sub/about">to vuevite3sub About</RouterLink>
-      </nav>
-    </div>
+    <el-page-header @back="goBack">
+      <template #content>
+        <span class="text-large font-600 mr-3"> {{ pageTitle }} </span>
+      </template>
+    </el-page-header>
   </header>
-
-  <RouterView />
-  <div id="VueVite3Sub"></div>
+  <div class="container">
+    <el-row class="tac">
+      <el-col :span="3">
+        <el-menu
+          active-text-color="#ffd04b"
+          background-color="#545c64"
+          class="el-menu-vertical-demo"
+          default-active="1"
+          text-color="#fff"
+          @select="handleSelect"
+        >
+          <el-menu-item v-for="menu in menus" :index="menu.key" :key="menu.key">
+            <span>{{ menu.title }}</span>
+          </el-menu-item>
+        </el-menu>
+      </el-col>
+      <el-col :span="21">
+        <div class="content">
+          <RouterView />
+          <div id="vue3ViteSub"></div>
+        </div>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <style scoped>
 header {
-  line-height: 1.5;
-  max-height: 100vh;
+  height: 50px;
+  background: #fff;
+  box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
+  display: flex;
+  align-items: center;
+  padding: 15px 15px 15px 20px;
+  position: relative;
+  z-index: 1;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+.container {
+  background: #f9fafd;
+  height: calc(100vh - 50px);
+  .tac {
+    height: 100%;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
+  .el-menu-vertical-demo {
+    height: 100%;
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+}
+.content {
+  padding: 15px;
 }
 </style>

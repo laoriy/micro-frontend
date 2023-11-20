@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import { qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
 const router = createRouter({
   history: createWebHistory(
-    qiankunWindow.__POWERED_BY_QIANKUN__ ? '/vuevite3sub' : import.meta.env.BASE_URL
+    qiankunWindow.__POWERED_BY_QIANKUN__ ? '/vue3ViteSub' : import.meta.env.BASE_URL
   ),
   routes: [
     {

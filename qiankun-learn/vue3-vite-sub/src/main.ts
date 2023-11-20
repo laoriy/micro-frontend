@@ -1,5 +1,4 @@
 import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helper'
-import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'

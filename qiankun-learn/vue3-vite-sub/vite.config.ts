@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [vue(), qiankun('vue-vite3-sub', { useDevMode: true })],
   server: {
     headers: {
-      'access-control-allow-origin': '*'    
+      'access-control-allow-origin': '*'
     }
   },
   resolve: {
