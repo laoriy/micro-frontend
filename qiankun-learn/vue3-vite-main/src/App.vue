@@ -1,17 +1,15 @@
 <script lang="ts" setup>
-import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
-import { RouterLink, RouterView, useRouter } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView, useRouter } from 'vue-router'
 import { ref } from 'vue'
 const { push, go } = useRouter()
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
+
 const menus = [
   { path: '/', title: 'Index', key: '1' },
   { path: '/about', title: 'About', key: '2' },
   { path: '/vue3ViteSub', title: 'Vue3ViteSub Home', key: '3' },
-  { path: '/vue3ViteSub/about', title: 'Vue3ViteSub About', key: '4' }
+  { path: '/vue3ViteSub/about', title: 'Vue3ViteSub About', key: '4' },
+  { path: '/vueWebpackSub', title: 'VueWebpackSub Home', key: '5' },
+  { path: '/vueWebpackSub/about', title: 'VueWebpackSub About', key: '6' }
 ]
 const pageTitle = ref('Index')
 
@@ -35,8 +33,8 @@ const goBack = () => {
     </el-page-header>
   </header>
   <div class="container">
-    <el-row class="tac">
-      <el-col :span="3">
+    <div class="tac">
+      <div class="left">
         <el-menu
           active-text-color="#ffd04b"
           background-color="#545c64"
@@ -49,14 +47,13 @@ const goBack = () => {
             <span>{{ menu.title }}</span>
           </el-menu-item>
         </el-menu>
-      </el-col>
-      <el-col :span="21">
-        <div class="content">
-          <RouterView />
-          <div id="vue3ViteSub"></div>
-        </div>
-      </el-col>
-    </el-row>
+      </div>
+      <div class="content">
+        <RouterView />
+        <div id="vue3ViteSub"></div>
+        <div id="vueWebpackSub"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -76,12 +73,17 @@ header {
   height: calc(100vh - 50px);
   .tac {
     height: 100%;
+    display: flex;
+  }
+  .left {
+    width: 200px;
   }
   .el-menu-vertical-demo {
     height: 100%;
   }
 }
 .content {
+  flex: 1;
   padding: 15px;
 }
 </style>

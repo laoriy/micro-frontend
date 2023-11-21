@@ -12,6 +12,12 @@ registerMicroApps([
     entry: 'http://localhost:5174',
     container: '#vue3ViteSub',
     activeRule: '/vue3ViteSub'
+  },
+  {
+    name: 'vue-webpack-sub',
+    entry: 'http://localhost:8080',
+    container: '#vueWebpackSub',
+    activeRule: '/vueWebpackSub'
   }
 ])
 start({ prefetch: true, sandbox: true })
