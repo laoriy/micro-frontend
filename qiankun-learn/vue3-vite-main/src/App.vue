@@ -9,7 +9,9 @@ const menus = [
   { path: '/vue3ViteSub', title: 'Vue3ViteSub Home', key: '3' },
   { path: '/vue3ViteSub/about', title: 'Vue3ViteSub About', key: '4' },
   { path: '/vueWebpackSub', title: 'VueWebpackSub Home', key: '5' },
-  { path: '/vueWebpackSub/about', title: 'VueWebpackSub About', key: '6' }
+  { path: '/vueWebpackSub/about', title: 'VueWebpackSub About', key: '6' },
+  { path: '/reactSub', title: 'ReactSub Home', key: '7' },
+  { path: '/reactSub/about', title: 'ReactSub About', key: '8' }
 ]
 const pageTitle = ref('Index')
 
@@ -52,6 +54,7 @@ const goBack = () => {
         <RouterView />
         <div id="vue3ViteSub"></div>
         <div id="vueWebpackSub"></div>
+        <div id="reactSub"></div>
       </div>
     </div>
   </div>

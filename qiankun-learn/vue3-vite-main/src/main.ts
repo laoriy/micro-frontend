@@ -18,6 +18,11 @@ registerMicroApps([
     entry: 'http://localhost:8080',
     container: '#vueWebpackSub',
     activeRule: '/vueWebpackSub'
+  },{
+    name: 'react-sub',
+    entry: 'http://localhost:3000',
+    container: '#reactSub',
+    activeRule: '/reactSub'
   }
 ])
 start({ prefetch: true, sandbox: true })
